@@ -5,7 +5,7 @@ from Structures_N import *
 def OraclePG(qc, ind = 4):
     if ind == 2:
         q = q0 + np.dot(B,qc)
-        val = np.dot(q,r*q*abs(q)) + np.dot(pr,np.dot(Ar,q))
+        val = np.dot(q,r*q*abs(q))/3 + np.dot(pr,np.dot(Ar,q))
         return val
     if ind == 3:
         q = q0 + np.dot(B,qc)
@@ -17,7 +17,7 @@ def OraclePG(qc, ind = 4):
     if ind == 4:
         q = q0 + np.dot(B,qc)
 
-        val = np.dot(q,r*q*abs(q)) + np.dot(pr,np.dot(Ar,q))
+        val = np.dot(q,r*q*abs(q))/3 + np.dot(pr,np.dot(Ar,q))
 
         grad = np.zeros(n-md)
         prod = r*q*np.abs(q) + np.dot(np.transpose(Ar),pr)

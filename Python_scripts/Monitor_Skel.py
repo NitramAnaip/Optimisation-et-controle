@@ -69,8 +69,8 @@ x0 = 0.1 * np.random.normal(size=n-md)
 #      Exemple 1 - le gradient a pas fixe :
 #
 # print()
-print("ALGORITHME DU GRADIENT A PAS FIXE")
-copt, gopt, xopt = Gradient_F(OraclePG, x0)
+# print("ALGORITHME DU GRADIENT A PAS FIXE")
+# copt, gopt, xopt = Gradient_F(OraclePG, x0)
 # print("NEWTON A PAS FIXE")
 # copt, gopt, xopt = Newton_F(OraclePH, x0)
 #
@@ -78,8 +78,8 @@ copt, gopt, xopt = Gradient_F(OraclePG, x0)
 #
 print()
 print("ALGORITHME DU GRADIENT A PAS VARIABLE")
-copt, gopt, xopt = Gradient_V(OraclePG, x0)
-# copt, gopt, xopt = Polak_Ribiere(OraclePG, x0)
+# copt, gopt, xopt = Gradient_V(OraclePG, x0)
+copt, gopt, xopt = Polak_Ribiere(OraclePG, x0)
 # copt, gopt, xopt = BFGS(OraclePG, x0)
 #
 # ---> A modifier...

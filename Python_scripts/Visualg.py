@@ -28,15 +28,15 @@ def Visualg(gradient_list, step_list, critere_list):
     plt.gca().set_yscale('log')
     plt.plot(gradient_list, label="Norme du gradient")
 
-    # plt.subplot(2, 1, 2)
-    # plt.gca().set_title("Pas de gradient au cours des iterations")
-    # plt.gca().set_yscale('log')
-    # plt.plot(step_list, label="Longueur du pas")
-
     plt.subplot(2, 1, 2)
-    plt.gca().set_title("Valeur du critere au cours des iterations")
+    plt.gca().set_title("Pas de gradient au cours des iterations")
+    plt.gca().set_yscale('log')
+    plt.plot(step_list, label="Longueur du pas")
+
+    # plt.subplot(2, 1, 2)
+    # plt.gca().set_title("Valeur du critere au cours des iterations")
     # plt.gca().set_yscale('log')
-    plt.plot(critere_list, label="Valeur du critère")
+    # plt.plot(critere_list, label="Valeur du critère")
 
     # plt.tight_layout(rect=(0, 0, 1, 2))
     plt.show()
