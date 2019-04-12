@@ -31,22 +31,21 @@ from Probleme_R import *
 from Structures_N import *
 
 def HydrauliqueD(pd):
-    
+
     # Pressions aux noeuds
     p = zeros(m)
     p[:mr] = pr
     p[mr:m] = pd
-    
+
     # Pertes de charge des arcs
     z = - dot(t(A), p)
-    
+
     # Debits des arcs
     q = z / sqrt(r*abs(z))
-    
+
     # Flux aux noeuds
     f = zeros(m)
     f[:mr] = dot(Ar,q)
     f[mr:m]= fd
-    
+
     return q, z, f, p
-    
