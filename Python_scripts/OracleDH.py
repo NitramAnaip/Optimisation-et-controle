@@ -5,7 +5,7 @@ from Probleme_R import *
 from Structures_N import *
 
 def OracleDH(qc, ind = 7):
-    q = np.sign(-np.dot(np.transpose(Ar),pr) - np.dot(np.transpose(Ar),pr)) \
+    q = np.sign(-np.dot(np.transpose(Ar),pr) - np.dot(np.transpose(Ad),Lambda)) \
             * np.sqrt(np.absolute((np.dot(np.transpose(Ar),pr) + np.dot(np.transpose(Ad),Lambda))/r)) ## ATTENTION: vérifier que diviser par r divise bien element wise
 
     if ind == 2:

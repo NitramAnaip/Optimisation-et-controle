@@ -34,6 +34,8 @@ from Gradient_F import Gradient_F
 from Minimize import Gradient_V, Polak_Ribiere, BFGS
 from OraclePH import OraclePH
 from Newton_F import Newton_F
+
+from OracleDG import OracleDG
 #
 #      Exemple 2 - le gradient a pas variable :
 #
@@ -52,11 +54,11 @@ from Newton_F import Newton_F
 #
 #      Probleme primal :
 #
-x0 = 0.1 * np.random.normal(size=n-md)
+# x0 = 0.1 * np.random.normal(size=n-md)
 #
 #      Probleme dual :
 #
-#                        x0 = 100 + np.random.normal(size=md)
+x0 = 100 + np.random.normal(size=md)
 #
 # ---> A modifier...
 # ---> A modifier...
@@ -68,23 +70,24 @@ x0 = 0.1 * np.random.normal(size=n-md)
 #
 #      Exemple 1 - le gradient a pas fixe :
 #
-# print()
-# print("ALGORITHME DU GRADIENT A PAS FIXE")
-# copt, gopt, xopt = Gradient_F(OraclePG, x0)
+print()
+print("ALGORITHME DU GRADIENT A PAS FIXE")
+# copt, gopt, xopt = Gradient_F(OraclePG, x0) # Cas primal
+copt, gopt, xopt = Gradient_F(OracleDG, x0) # Cas dual
 # print("NEWTON A PAS FIXE")
 # copt, gopt, xopt = Newton_F(OraclePH, x0)
 #
 #      Exemple 2 - le gradient a pas variable :
 #
-print()
-print("ALGORITHME DU GRADIENT A PAS VARIABLE")
+# print()
+# print("ALGORITHME DU GRADIENT A PAS VARIABLE")
 # copt, gopt, xopt = Gradient_V(OraclePG, x0)
-copt, gopt, xopt = Polak_Ribiere(OraclePG, x0)
+# copt, gopt, xopt = Polak_Ribiere(OraclePG, x0)
 # copt, gopt, xopt = BFGS(OraclePG, x0)
 #
-# ---> A modifier...
-# ---> A modifier...
-# ---> A modifier...
+# copt, gopt, xopt = Gradient_V(OracleDG, x0)
+# copt, gopt, xopt = Polak_Ribiere(OracleDG, x0)
+# copt, gopt, xopt = BFGS(OracleDG, x0)
 
 ##### Verification des resultats
 
@@ -93,12 +96,12 @@ copt, gopt, xopt = Polak_Ribiere(OraclePG, x0)
 #      HydrauliqueP pour le probleme primal, et HydrauliqueD
 #      pour le probleme dual
 #
-#      Probleme primal :
+#    Probleme primal :
 #
-qopt, zopt, fopt, popt = HydrauliqueP(xopt)
+# qopt, zopt, fopt, popt = HydrauliqueP(xopt)
 #
-#
-#                        qopt, zopt, fopt, popt = HydrauliqueD(xopt)
+#    Probleme dual :
+qopt, zopt, fopt, popt = HydrauliqueD(xopt)
 #
 # ---> A modifier...
 # ---> A modifier...
