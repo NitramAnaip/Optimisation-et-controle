@@ -4,12 +4,11 @@ import copy
 from Wolfe_Skel import Wolfe
 from Visualg import Visualg
 
-def Polak_Ribiere(Oracle, x0):
+def Polak_Ribiere(Oracle, x0, gradient_step_ini=1):
 
     ##### Initialisation des variables
 
     iter_max = 10000
-    gradient_step_ini = 1
     threshold = 0.000001
 
     gradient_norm_list = []
@@ -125,11 +124,10 @@ def Gradient_V(Oracle, x0):
 
     return critere_opt, gradient_opt, x_opt
 
-def BFGS(Oracle, x0):
+def BFGS(Oracle, x0, gradient_step_ini=1):
 
     ##### Initialisation des variables
     iter_max = 10000
-    gradient_step_ini = 1
     threshold = 0.000001
     gradient_norm_list = []
     gradient_step_list = []
@@ -170,7 +168,7 @@ def BFGS(Oracle, x0):
         delta_g = (gradient - gradient_ant).reshape((x.shape[0],1))
         prod1 = I - np.dot(delta_x,np.transpose(delta_g))/np.asscalar(np.dot(np.transpose(delta_g),delta_x))
         prod2 = I - np.dot(delta_g,np.transpose(delta_x))/np.asscalar(np.dot(np.transpose(delta_g),delta_x))
-        prod3 = I - np.dot(delta_x,np.transpose(delta_x))/np.asscalar(np.dot(np.transpose(delta_g),delta_x))
+        prod3 = np.dot(delta_x,np.transpose(delta_x))/np.asscalar(np.dot(np.transpose(delta_g),delta_x))
         W = np.dot(np.dot(prod1,W),prod2) + prod3
 
         # Evolution du gradient, du pas, et du critere
